@@ -14,14 +14,16 @@ port.onMessage.addListener(function(msg) {
         console.log(classes[i]);
         console.log(volume);
         volume.click();
-        console.log("Muting!");
+        console.log("Muted!");
         break;
       }
     }
   }
   else if (msg.message == "Unmute.") {
-    var volume = document.getElementsByClassName("spoticon-volume-off-16 control-button")[0]
+    console.log("Unmuting...");
+    var volume = document.getElementsByClassName("spoticon-volume-off-16")[0];
+    console.log(volume);
     volume.click();
-    console.log("Unmuting!");
+    console.log("Unmuted!");
   }
 });
