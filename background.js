@@ -3,7 +3,9 @@ chrome.runtime.onConnect.addListener(function(port) {
   this.prevWasAd = false;
   var self = this;
   chrome.webRequest.onBeforeRequest.addListener(function(details) {
-    if (details.url.includes('adeventtracker') || details.url.includes('cloudfront') || details.url.includes('shrt')) {
+    if (details.url.includes('adeventtracker') ||
+      details.url.includes('shrt') ||
+      (details.url.includes('cloudfront') && details.url.includes('mp3'))) {
       self.prevWasAd = true;
       port.postMessage({message: "Ad detected."});
       console.log("Ad detected: " + details.url);
