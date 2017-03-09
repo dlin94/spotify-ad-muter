@@ -1,6 +1,10 @@
 var port = chrome.runtime.connect({name: "port"});
+port.postMessage({message: "Hi!"});
 port.onMessage.addListener(function(msg) {
-  if (msg.message == "Ad detected.") {
+  if (msg.message == "Hello!") {
+    console.log("Connection confirmed.");
+  }
+  else if (msg.message == "Ad detected.") {
     var volume;
     var classes = ["spoticon-volume-onewave-16 control-button",
                    "spoticon-volume-twowave-16 control-button",
