@@ -1,5 +1,10 @@
 var port = chrome.runtime.connect({name: "port"});
 port.postMessage({message: "Hi!"});
+
+port.onDisconnect.addListener(function() {
+  console.log("Disconnecting port.");
+});
+
 port.onMessage.addListener(function(msg) {
   if (msg.message == "Hello!") {
     console.log("Connection confirmed.");

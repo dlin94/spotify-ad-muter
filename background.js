@@ -5,6 +5,10 @@ chrome.runtime.onConnect.addListener(function(port) {
   var self = this;
   port.postMessage({message:"Hello!"});
 
+  port.onDisconnect.addListener(function() {
+    console.log("Disconnecting port.");
+  });
+
   port.onMessage.addListener(function(msg) {
     if (msg.message == "Hi!")
       port.postMessage({message: "Hello!"});
